@@ -1,0 +1,19 @@
+// All the backend code related with user will be written here.
+// For example: user registration, login, profile management, etc.
+// Since Next.js is an opinionated framework, this is a generally enforced opinion by Next.js to keep the code organized and maintainable.
+
+export function GET(req: Request){ // for headers and parameters we can use Request object as function parameter.
+    // This method can be of any type like GET, POST, DELETE, PUT, PATCH etc. For that we'll replace above GET with POST, DELETE, PUT, PATCH etc.
+    return Response.json({
+        email : "nitin@gmail.com",
+        username : "Nitin"
+    })
+}
+
+// The above route is same written below in express.
+
+// app.get('/api/user', (req, res) => {
+//     res.json({
+//         email : "nitin@gmail.com",
+//         username : "Nitin"
+// })
