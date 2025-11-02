@@ -1,6 +1,8 @@
 
 "use client";
 
+import axios from "axios";
+import { useRouter } from "next/navigation";
 import React, { useState } from "react";
 
 type Props = {
@@ -14,6 +16,7 @@ export default function SignUp({ onSuccess }: Props) {
 	const [confirm, setConfirm] = useState("");
 	const [error, setError] = useState("");
 	const [loading, setLoading] = useState(false);
+	const router = useRouter(); // This router is used to redirect user on frontend on some interactions.
 
 	function validate() {
 		if (!name.trim()) return "Name is required";
@@ -24,7 +27,7 @@ export default function SignUp({ onSuccess }: Props) {
 		return "";
 	}
 
-	function handleSubmit(e: React.FormEvent) {
+	async function handleSubmit(e: React.FormEvent) {
 		e.preventDefault();
 		setError("");
 		const v = validate();
@@ -34,6 +37,12 @@ export default function SignUp({ onSuccess }: Props) {
 		}
 
 		// Demo submit - replace with real API call
+		const response = await axios.post("http://localhost:3000/api/user", {
+			email: email,
+			name : name
+		})
+		router.push("/");
+		console.log(response);
 		setLoading(true);
 		setTimeout(() => {
 			setLoading(false);

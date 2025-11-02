@@ -2,11 +2,16 @@
 // For example: user registration, login, profile management, etc.
 // Since Next.js is an opinionated framework, this is a generally enforced opinion by Next.js to keep the code organized and maintainable.
 
-export function GET(req: Request){ // for headers and parameters we can use Request object as function parameter.
+import { NextRequest } from "next/server";
+
+export async function POST(req: NextRequest){ // for headers and parameters we can use Request object as function parameter.
     // This method can be of any type like GET, POST, DELETE, PUT, PATCH etc. For that we'll replace above GET with POST, DELETE, PUT, PATCH etc.
+
+    // make the database call and check if user is present and if yes then log the user and send the message.
+    const body = await req.json();
+    console.log(body);
     return Response.json({
-        email : "nitin@gmail.com",
-        username : "Nitin"
+        message : "you are logged in"
     })
 }
 
