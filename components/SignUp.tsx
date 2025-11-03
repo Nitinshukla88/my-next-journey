@@ -37,7 +37,7 @@ export default function SignUp({ onSuccess }: Props) {
 		}
 
 		// Demo submit - replace with real API call
-		const response = await axios.post("http://localhost:3000/api/user", {
+		const response = await axios.post("http://localhost:3000/api/user", { // Server side Data fetching
 			email: email,
 			name : name
 		})
